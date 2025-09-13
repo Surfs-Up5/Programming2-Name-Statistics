@@ -31,7 +31,19 @@ public class nameStats{
                 orderedList(names);
             }
 
-        }
+            if(choice == 2){
+                displayFullNames(names);
+            }
+
+            if (choice == 3){
+                displaySingleNames(names);
+            }
+
+            if(choice == 4){
+                statistics(names);
+            }
+
+        }//end while
         
         
     }//end method
@@ -54,7 +66,86 @@ public class nameStats{
         ArrayList<String> sortedNames = new ArrayList<>(names);
         Collections.sort(sortedNames);
         System.out.println(sortedNames);
-    }
+    }//end method
+
+    //Disply full names
+    public static void displayFullNames(ArrayList<String> names) {
+        ArrayList <String> fullNames = new ArrayList<>();
+        for(String name : names ){
+            String [] parts = name.split(" ");
+            if (parts.length == 2){
+                fullNames.add(name);
+                System.out.println(fullNames);
+
+            }
+        }//end for
+    }//end method
+
+    //Disply single names
+    public static void displaySingleNames(ArrayList<String> names) {
+        ArrayList <String> singleNames = new ArrayList<>();
+        for(String name : names ){
+            String [] parts = name.split(" ");
+            if (parts.length == 1){
+                singleNames.add(name);
+                System.out.println(singleNames);
+
+            }
+        }//end for
+    }//end method
+
+    //Name Statistics
+    public static void statistics(ArrayList<String> names) {
+        int nameCount = 0;
+        int letterCount = 0;
+        double avLength = 0;
+        String shortest = "";
+        String longest = "";
+        double deviation = 0;
+        
+        nameCount = names.size();
+        for(String name : names){
+            String clean = name.replace(" ", "").replace(",", "");
+            letterCount += clean.length();
+        }
+        avLength = letterCount / nameCount;
+        avLength = Math.round(avLength * 100.0) / 100.0;
+
+        shortest = names.get(0);
+        int minLength = shortest.replace(" ", "").length();
+        for(String name : names){
+            int len = name.replace(" ", "").length();
+            if (len < minLength){
+                minLength = len;
+                shortest = name;
+            }
+        }//end for
+
+        longest = names.get(0);
+        int maxLength = longest.replace(" ", "").length();
+        for(String name : names){
+            int len = name.replace(" ", "").length();
+            if (len > maxLength){
+                maxLength = len;
+                longest = name;
+            }
+        }//end for
+
+        double sumSqrs = 0.0;
+        for(String name : names){
+            int len = name.replace(" ", "").length();
+            sumSqrs += Math.pow(len - avLength, 2);
+        }
+        double stdDev = Math.sqrt(sumSqrs / nameCount);
+        stdDev = Math.round(stdDev * 100.0) / 100.0;
+
+        System.out.println("Name count: " + nameCount);
+        System.out.println("Letter Count Total: " + letterCount);
+        System.out.println("Avg Name Length: " + avLength);
+        System.out.println("Shortest Name: " + shortest);
+        System.out.println("Longest Name: " + longest);
+        System.out.println("Population Standard Deviation: " + stdDev);
+    }//end method
 
 
 
