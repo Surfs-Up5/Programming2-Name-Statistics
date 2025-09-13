@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class nameStats{
@@ -43,6 +44,22 @@ public class nameStats{
                 statistics(names);
             }
 
+            if(choice == 5){
+                evenNames(names);
+            }
+
+            if(choice == 6){
+                oddNames(names);
+            }
+
+            if(choice == 7){
+                notCapitalized(names);
+            }
+
+            if(choice == 8){
+                Frequency(names);
+            }
+
         }//end while
         
         
@@ -56,7 +73,8 @@ public class nameStats{
         System.out.println("    4: Display Name Statistics");
         System.out.println("    5: Display Names with Even Length");
         System.out.println("    6: Display names with odd length");
-        System.out.println("    8: Display names NOT Capitalized");
+        System.out.println("    7: Display names NOT Capitalized");
+        System.out.println("    8. Display most Frequent Name");
         System.out.println("    9: Enter New List of Names");
         System.out.println("    0: Quit the Program");
     }
@@ -147,6 +165,77 @@ public class nameStats{
         System.out.println("Population Standard Deviation: " + stdDev);
     }//end method
 
+    public static void evenNames(ArrayList<String> names){
+        int nameLength = 0;
+        ArrayList <String> evenNames = new ArrayList<>();
+        for(String name : names){
+            String clean = name.replace(" ", "");
+            nameLength = clean.length();
+            if(nameLength % 2 == 0){
+                evenNames.add(name);
+            }
+        }
+        System.out.println(evenNames);
+    }//end method
+
+    public static void oddNames(ArrayList<String> names){
+        int nameLength = 0;
+        ArrayList <String> oddNames = new ArrayList<>();
+        for(String name : names){
+            String clean = name.replace(" ", "");
+            nameLength = clean.length();
+            if(nameLength % 2 == 1){
+                oddNames.add(name);
+            }
+        }
+        System.out.println(oddNames);
+    }//end method
+
+public static void notCapitalized(ArrayList<String> names){
+    ArrayList<String> noCap = new ArrayList<>();
+    
+    for(String name : names){
+        String[] parts = name.split(" ");
+        boolean allLower = true;
+        
+        for(String part : parts){
+            if(Character.isUpperCase(part.charAt(0))){
+                allLower = false;
+                break;
+            }
+        }
+        
+        if(allLower){ 
+            noCap.add(name);
+        }
+    }
+    System.out.println(noCap);
+}
+
+public static void Frequency(ArrayList<String> names){
+    HashMap<String, Integer> freq = new HashMap<>();
+
+    for(String name : names){
+        String lower = name.toLowerCase();
+        freq.put(lower, freq.getOrDefault(lower, 0) + 1);
+    }
+
+    String most = "";
+    int maxCount = 0;
+    for(String key : freq.keySet()){
+        int count = freq.get(key);
+        if(count > maxCount){
+            maxCount = count;
+            most = key;
+        }
+    }
+
+    if(maxCount == 1){
+        System.out.println("No most frequent names.");
+    } else{
+        System.out.println("Most frequent name: " + most);
+    }
+}
 
 
 }//end class
