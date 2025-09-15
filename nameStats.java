@@ -27,6 +27,7 @@ public class nameStats{
         
         while(choice != 0){
             displayMenu();
+            System.out.println("Enter the option you'd like to execute: ");
             choice = scnr.nextInt();
             if(choice == 1){
                 orderedList(names);
@@ -58,6 +59,11 @@ public class nameStats{
 
             if(choice == 8){
                 Frequency(names);
+            }
+
+            if(choice == 9){
+                scnr.nextLine();
+                names = enterNames(scnr);
             }
 
         }//end while
@@ -236,6 +242,24 @@ public static void Frequency(ArrayList<String> names){
         System.out.println("Most frequent name: " + most);
     }
 }
+
+public static ArrayList<String> enterNames(Scanner scnr) {
+    System.out.println("Enter in a list of names deliminated by commas (enter stop to stop): ");
+        
+        String input = scnr.nextLine();
+
+        ArrayList<String> newNames = new ArrayList<>();
+
+        //splitting up the names
+        String[] splitNames = input.split(",");
+
+        //trims down white spaces and adds to final (names) array
+        for(String name : splitNames){
+            newNames.add(name.trim());
+        }
+        return newNames ;
+}
+
 
 
 }//end class
