@@ -70,7 +70,9 @@ public class nameStats{
         
         
     }//end method
-
+/**
+ * Displays the list of options the user can choose from.
+ */
     public static void displayMenu(){
         System.out.println("Options-");
         System.out.println("    1: Display List Ordered");
@@ -85,14 +87,20 @@ public class nameStats{
         System.out.println("    0: Quit the Program");
     }
 
-    //Alphabetical Sorting
+    /**
+     * Sorts the names entered into alphabetical order and adds them to a new String Array then prints them out.
+     * @param names the list of names the user entered
+     */
     public static void orderedList(ArrayList<String> names){
         ArrayList<String> sortedNames = new ArrayList<>(names);
         Collections.sort(sortedNames);
         System.out.println(sortedNames);
     }//end method
 
-    //Disply full names
+    /**
+     * Takes the names the user enters and adds only the ones with first and last name to a new string then prints it out.
+     * @param names the list of names the user entered
+     */
     public static void displayFullNames(ArrayList<String> names) {
         ArrayList <String> fullNames = new ArrayList<>();
         for(String name : names ){
@@ -105,7 +113,10 @@ public class nameStats{
         }//end for
     }//end method
 
-    //Disply single names
+    /**
+     * Takes the names the user enters and adds only the ones with first name only to a new string then prints it out.
+     * @param names the list of names the user entered
+     */
     public static void displaySingleNames(ArrayList<String> names) {
         ArrayList <String> singleNames = new ArrayList<>();
         for(String name : names ){
@@ -118,7 +129,12 @@ public class nameStats{
         }//end for
     }//end method
 
-    //Name Statistics
+    /**
+     * Takes in the names that the user entered, calculates and outputs: number of names given, total letter count,
+     * average length for names, shortest name, longest name, and the population standard deviation of the name lengths.
+     * 
+     * @param names the list of names the user entered
+     */
     public static void statistics(ArrayList<String> names) {
         int nameCount = 0;
         int letterCount = 0;
@@ -171,6 +187,10 @@ public class nameStats{
         System.out.println("Population Standard Deviation: " + stdDev);
     }//end method
 
+    /**
+     * takes in names string, calculates the even names, then adds them to a new string and prints the new string.
+     * @param names the list of names the user entered
+     */
     public static void evenNames(ArrayList<String> names){
         int nameLength = 0;
         ArrayList <String> evenNames = new ArrayList<>();
@@ -184,6 +204,10 @@ public class nameStats{
         System.out.println(evenNames);
     }//end method
 
+    /**
+     * takes in names string, calculates the odd names, then adds them to a new string and prints the new string.
+     * @param names the list of names the user entered
+     */
     public static void oddNames(ArrayList<String> names){
         int nameLength = 0;
         ArrayList <String> oddNames = new ArrayList<>();
@@ -197,6 +221,10 @@ public class nameStats{
         System.out.println(oddNames);
     }//end method
 
+/**
+ * takes in name string array, calculates the names that are not capitalized, adds them to a new string then prints the string out
+ * @param names the list of names the user entered
+ */
 public static void notCapitalized(ArrayList<String> names){
     ArrayList<String> noCap = new ArrayList<>();
     
@@ -218,6 +246,10 @@ public static void notCapitalized(ArrayList<String> names){
     System.out.println(noCap);
 }
 
+/**
+ * calculates the name that was entered the most, and prints it out. If no name was entered the most, prints "no name was entered most"
+ * @param names the list of names the user entered
+ */
 public static void Frequency(ArrayList<String> names){
     HashMap<String, Integer> freq = new HashMap<>();
 
@@ -243,6 +275,11 @@ public static void Frequency(ArrayList<String> names){
     }
 }
 
+/**
+ * allows the user to enter a list of names seperated by commas, then the method seperates the names by the commas, it then
+ * trims down white spaces and then adds to final (names) array
+ * @param Scanner scnr
+ */
 public static ArrayList<String> enterNames(Scanner scnr) {
     System.out.println("Enter in a list of names deliminated by commas (enter stop to stop): ");
         
