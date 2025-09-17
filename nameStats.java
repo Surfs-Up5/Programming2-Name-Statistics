@@ -263,3 +263,12 @@ public static ArrayList<String> enterNames(Scanner scnr) {
 
 
 }//end class
+
+/* to do for project before submit:
+-Java do  comments for each method and class
+-make sure naming conventions
+-Check implementation requirements
+-run test cases
+-make flow chart
+-put together zip folder
+*/
