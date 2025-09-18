@@ -3,8 +3,19 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class nameStats{
+    /**
+     * The name staistics program will prompt the user to input a list of names delimited by commas. Then the
+     * program will display a list of options for the user to pick from. The program will continue to run and
+     * allow the user to select multiple options only existng when option 0 is selected
+     */
 
+public class NameStats{
+    /**
+     * Main entry point for the program
+     * It then displays a menu of options for processing the names. 
+     * The program continues running until the user selects option 0 to exit.
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
 
         //declaring
@@ -278,7 +289,8 @@ public static void Frequency(ArrayList<String> names){
 /**
  * allows the user to enter a list of names seperated by commas, then the method seperates the names by the commas, it then
  * trims down white spaces and then adds to final (names) array
- * @param Scanner scnr
+ * @param Scanner scnr a Scanner object used to read user input
+ * @return a list of trimmed names entered by the user
  */
 public static ArrayList<String> enterNames(Scanner scnr) {
     System.out.println("Enter in a list of names deliminated by commas (enter stop to stop): ");
@@ -302,7 +314,6 @@ public static ArrayList<String> enterNames(Scanner scnr) {
 }//end class
 
 /* to do for project before submit:
--Java do  comments for each method and class
 -make sure naming conventions
 -Check implementation requirements
 -run test cases
