@@ -312,15 +312,4 @@ public static ArrayList<String> enterNames(Scanner scnr) {
         }
         return newNames ;
 }
-
-
-
 }//end class
-
-/* to do for project before submit:
--make sure naming conventions
--Check implementation requirements
--run test cases
--make flow chart
--put together zip folder
-*/
