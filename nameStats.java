@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -103,41 +102,46 @@ public class NameStats{
      * @param names the list of names the user entered
      */
     public static void orderedList(ArrayList<String> names){
-        ArrayList<String> sortedNames = new ArrayList<>(names);
-        Collections.sort(sortedNames);
-        System.out.println(sortedNames);
-    }//end method
+    ArrayList<String> sortedNames = new ArrayList<>(names);
+    sortedNames.sort(String.CASE_INSENSITIVE_ORDER); // <-- sorts ignoring case
+    System.out.println(sortedNames);
+    }
 
     /**
      * Takes the names the user enters and adds only the ones with first and last name to a new string then prints it out.
      * @param names the list of names the user entered
      */
     public static void displayFullNames(ArrayList<String> names) {
-        ArrayList <String> fullNames = new ArrayList<>();
-        for(String name : names ){
-            String [] parts = name.split(" ");
-            if (parts.length == 2){
-                fullNames.add(name);
-                System.out.println(fullNames);
-
-            }
-        }//end for
-    }//end method
+    ArrayList<String> fullNames = new ArrayList<>();
+    for (String name : names) {
+        String[] parts = name.split(" ");
+        if (parts.length == 2) {
+            fullNames.add(name);
+        }
+    }
+    System.out.println("Option 2 Output:");
+    for (String full : fullNames) {
+        System.out.println(full);
+    }
+}//end
 
     /**
      * Takes the names the user enters and adds only the ones with first name only to a new string then prints it out.
      * @param names the list of names the user entered
      */
     public static void displaySingleNames(ArrayList<String> names) {
-        ArrayList <String> singleNames = new ArrayList<>();
-        for(String name : names ){
-            String [] parts = name.split(" ");
-            if (parts.length == 1){
-                singleNames.add(name);
-                System.out.println(singleNames);
+    ArrayList<String> singleNames = new ArrayList<>();
+    for (String name : names) {
+        String[] parts = name.split(" ");
+        if (parts.length == 1) {
+            singleNames.add(name);
+        }
+    }
 
-            }
-        }//end for
+    System.out.println("Option 3 Output:");
+    for (String single : singleNames) {
+        System.out.println(single);
+    }
     }//end method
 
     /**
@@ -153,7 +157,7 @@ public class NameStats{
         String shortest = "";
         String longest = "";
         double deviation = 0;
-        
+
         nameCount = names.size();
         for(String name : names){
             String clean = name.replace(" ", "").replace(",", "");
