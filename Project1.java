@@ -163,8 +163,8 @@ import java.util.Scanner;
             String clean = name.replace(" ", "").replace(",", "");
             letterCount += clean.length();
         }
-        avLength = letterCount / nameCount;
-        avLength = Math.round(avLength * 100.0) / 100.0;
+        avLength = (double) letterCount / nameCount;
+        avLength = Math.round(avLength * 100.0) / 100.0d;
 
         shortest = names.get(0);
         int minLength = shortest.replace(" ", "").length();
@@ -192,7 +192,7 @@ import java.util.Scanner;
             sumSqrs += Math.pow(len - avLength, 2);
         }
         double stdDev = Math.sqrt(sumSqrs / nameCount);
-        stdDev = Math.round(stdDev * 100.0) / 100.0;
+        stdDev = Math.round(stdDev * 100.0) / 100.0d;
 
         System.out.println("Name count: " + nameCount);
         System.out.println("Letter Count Total: " + letterCount);
